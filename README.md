@@ -2,7 +2,7 @@
 
 **Machine learning system that predicts appointment no-shows and recommends optimal reminder strategies, reducing no-show rates by 30-40%.**
 
-![ShowUp Dashboard](docs/dashboard-preview.png)
+![ShowUp Dashboard](docs/dashboard.preview.png)
 
 ## 🎯 Problem
 
@@ -75,6 +75,24 @@ Historical Data → ML Training → Risk Prediction → Smart Reminders → Redu
 │        │  │learn     │
 └────────┘  └──────────┘
 ```
+
+## 📸 Dashboard Preview
+
+### Statistics Overview
+![Dashboard Statistics](docs/dashboard-preview.png)
+*Live dashboard showing 225 appointments, 50 patients, 28.4% no-show rate*
+
+### Low-Risk Prediction Example
+![Low Risk Patient](docs/predictionresultlow.png)
+*Patient P001: 16% risk (LOW) - Send 1 reminder, 1 day before appointment*
+
+### High-Risk Prediction Example
+![High Risk Patient](docs/predictionriskhigh.png)
+*Patient P010: 77% risk (HIGH) - Send 3 reminders + phone call confirmation*
+
+### Model Training Results
+![Model Performance](docs/perform-import-train.png)
+*Model training: 86.7% accuracy, 77.8% precision, 63.6% recall with 225 training samples*
 
 ## 🚀 Quick Start
 
