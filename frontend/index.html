@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShowUp - No-Show Predictor Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>📊 ShowUp Dashboard</h1>
+            <p>AI-Powered Appointment No-Show Prediction System</p>
+        </header>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Total Appointments</h3>
+                <p class="stat-number" id="totalAppointments">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>Total Patients</h3>
+                <p class="stat-number" id="totalPatients">--</p>
+            </div>
+            <div class="stat-card">
+                <h3>No-Shows</h3>
+                <p class="stat-number" id="totalNoshows">--</p>
+            </div>
+            <div class="stat-card highlight">
+                <h3>No-Show Rate</h3>
+                <p class="stat-number" id="noshowRate">--</p>
+            </div>
+        </div>
+
+        <!-- Prediction Form -->
+        <div class="section">
+            <h2>🔮 Predict No-Show Risk</h2>
+            <form id="predictionForm">
+                <div class="form-group">
+                    <label for="patientCode">Patient Code:</label>
+                    <input type="text" id="patientCode" placeholder="e.g., P001" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentDate">Appointment Date:</label>
+                    <input type="date" id="appointmentDate" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentTime">Appointment Time:</label>
+                    <input type="time" id="appointmentTime" required>
+                </div>
+                <div class="form-group">
+                    <label for="appointmentType">Appointment Type:</label>
+                    <select id="appointmentType">
+                        <option value="cleaning">Cleaning</option>
+                        <option value="checkup">Checkup</option>
+                        <option value="filling">Filling</option>
+                        <option value="extraction">Extraction</option>
+                        <option value="root_canal">Root Canal</option>
+                        <option value="crown">Crown</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-primary">Predict Risk</button>
+            </form>
+        </div>
+
+        <!-- Prediction Result -->
+        <div id="predictionResult" class="section" style="display: none;">
+            <h2>Prediction Result</h2>
+            <div class="prediction-card">
+                <div class="risk-score">
+                    <div class="score-circle" id="scoreCircle">
+                        <span id="riskScore">--</span>
+                    </div>
+                    <p class="risk-level" id="riskLevel">--</p>
+                </div>
+                <div class="prediction-details">
+                    <p><strong>Patient:</strong> <span id="resultPatient">--</span></p>
+                    <p><strong>Appointment:</strong> <span id="resultDateTime">--</span></p>
+                    <p><strong>Probability:</strong> <span id="resultProbability">--</span></p>
+                    <div class="recommendation">
+                        <strong>💡 Recommendation:</strong>
+                        <p id="resultRecommendation">--</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Chart -->
+        <div class="section">
+            <h2>📈 Model Performance</h2>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Import Section -->
+        <div class="section">
+            <h2>📁 Import Appointment Data</h2>
+            <form id="importForm">
+                <div class="form-group">
+                    <label for="csvFile">CSV File:</label>
+                    <input type="file" id="csvFile" accept=".csv" required>
+                </div>
+                <button type="submit" class="btn-secondary">Import CSV</button>
+            </form>
+            <div id="importResult" style="margin-top: 1rem;"></div>
+        </div>
+
+        <!-- Train Model Section -->
+        <div class="section">
+            <h2>🤖 Train ML Model</h2>
+            <p>Train the prediction model on current appointment data.</p>
+            <button id="trainButton" class="btn-primary">Train Model</button>
+            <div id="trainResult" style="margin-top: 1rem;"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
