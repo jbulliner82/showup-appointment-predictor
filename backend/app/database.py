@@ -10,8 +10,21 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Get database URL from environment
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./showup.db")
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+# Get database URL from environment or use SQLite for local dev
+SQLALCHEMY_DATABASE_URL = os.getenv(
+    "DATABASE_URL",
+    "sqlite:///./showup.db"  # Fallback for local development
+)
+
+# Fix for Railway PostgreSQL URL (Railway uses postgres:// but SQLAlchemy needs postgresql://)
+if SQLALCHEMY_DATABASE_URL and SQLALCHEMY_DATABASE_URL.startswith("postgres://"):
+    SQLALCHEMY_DATABASE_URL = SQLALCHEMY_DATABASE_URL.replace("postgres://", "postgresql://", 1)
+```
 
 # Create database engine
 # For SQLite, we need to enable check_same_thread=False
