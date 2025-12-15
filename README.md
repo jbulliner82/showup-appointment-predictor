@@ -2,7 +2,7 @@
 
 **Machine learning system that predicts appointment no-shows and recommends optimal reminder strategies, reducing no-show rates by 30-40%.**
 
-![ShowUp Dashboard](docs/dashboard-preview.png)
+![ShowUp Dashboard](docs/dashboard.preview.png)
 
 ## 🎯 Problem
 
